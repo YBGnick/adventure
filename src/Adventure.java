@@ -32,26 +32,26 @@ public class Adventure {
         System.out.println("You have fallen from a tree and cannot remember anything about yourself. It is up to you, " + hero + ", to rediscover your past");
 
         String direction = "";
-        System.out.println("CROSSROADS 1: You come accross 2 paths with signs that describe the paths, they are called the North and South paths. type your desired path");
+        System.out.println("CROSSROADS 1: You come accross 2 paths with signs that describe the paths, they are called the North and South paths. type your desired path(S or N)");
         direction = s.nextLine();
-        while (!(direction == "N" || direction == "S")) {
+        while (!direction.equals("N") && !direction.equals("S")) {
+            System.out.println(direction);
             System.out.println("Redo");
-            System.out.println("CROSSROADS 1: You come accross 2 paths with signs that describe the paths, they are called the North and South paths. type your desired path");
-            direction = s.nextLine();
+            System.out.println("CROSSROADS 1: You come accross 2 paths with signs that describe the paths, they are called the North and South paths. type your desired path(S or N)");
+            direction = s.next();
         }
-        System.out.println(direction);
-        if (direction == "N") {
+        if (direction.equals("N")) {
             System.out.println("You chose the North path! The norh path leads you to your hometown with few inhabitants, yet there is a town in between that may be hostile.");
             System.out.println("Along the North path, you encounter a small dog that looks hungry");
             System.out.println("do you want to take this dog as your friend? (Y or N)");
             direction = s.nextLine();
-            while (direction != "N" || direction != "Y") {
+            while (!direction.equals("N") && !direction.equals("Y")) {
                 System.out.println("Redo");
                 System.out.println("do you want to take this dog as your friend? (Y or N)");
                 direction = s.nextLine();
             }
 
-            if (direction == "Y") {
+            if (direction.equals("Y")) {
                 System.out.println("the dog bites you and you are dead.");
                 System.out.println("You lose! type YES to play again");
                 s.close();
@@ -62,12 +62,12 @@ public class Adventure {
 
             System.out.println("Do you stay behind? (Y or N)");
             direction = s.nextLine();
-            while (direction != "N" || direction != "Y") {
+            while (!direction.equals("N") && !direction.equals("Y")) {
                 System.out.println("Redo");
                 System.out.println("Do you stay behind? (Y or N)");
                 direction = s.nextLine();
             }
-            if (direction == "N") {
+            if (direction.equals("N")) {
                 System.out.println("You lost! Your one goall was to travel home and you got caught up in the small town");
                 System.out.println("You lose! type YES to play again!");
                 s.close();
@@ -80,29 +80,29 @@ public class Adventure {
 
             
         }
-        if (direction == "S") {
+        if (direction.equals("S")) {
             System.out.println("You walk accross the path, when a mountain is in the way, you can either scale the mountain or go around");
             System.out.println("Go up the M or W around");
-            while (direction != "M" || direction != "W") {
+            while (!direction.equals( "M") && !direction.equals("W")) {
                 System.out.println("Redo");
                 System.out.println("Go up the M or W around");
                 direction = s.nextLine();
             } 
-            if (direction == "M") {
+            if (direction.equals("M")) {
                 System.out.println("While scaling the mountain, you encounter a friendly villager that knows the way to your hometown");
                 System.out.println("you encounter a small dog that looks hungry");
                 System.out.println("do you want to take this dog as your friend? (Y or N)");
                 direction = s.nextLine();
-                while (direction != "N" || direction != "Y") {
+                while (!direction.equals("N") && !direction.equals("Y")) {
                     System.out.println("Redo");
                     System.out.println("do you want to take this dog as your friend? (Y or N)");
                     direction = s.nextLine();
                 }
 
-                if (direction == "Y") {
+                if (direction.equals("Y")) {
                     System.out.println("the dog bites you and you are dead.");
                     System.out.println("You lose! type YES to play again");
-                s.close();
+                    s.close();
                     return;
                 } 
                 System.out.println("you walk to town past the dog anyway without it");
@@ -110,15 +110,15 @@ public class Adventure {
 
                 System.out.println("Do you stay behind? (Y or N)");
                 direction = s.nextLine();
-                while (direction != "N" || direction != "Y") {
+                while (!direction.equals("N") && !direction.equals("Y")) {
                     System.out.println("Redo");
                     System.out.println("Do you stay behind? (Y or N)");
                     direction = s.nextLine();
                 }
-                if (direction == "N") {
+                if (direction.equals("N")) {
                     System.out.println("You lost! Your one goall was to travel home and you got caught up in the small town");
                     System.out.println("You lose! type YES to play again!");
-                s.close();
+                    s.close();
                     return;
                 } 
 
@@ -136,7 +136,13 @@ public class Adventure {
     public static void main(String[] args) {
     
         Scanner s = new Scanner(System.in);
+        while(true) {
             adventure();
+            if (!s.nextLine().equals("YES")) {
+                break;
+            }
+        }
+        s.close();
     }
 
 }
